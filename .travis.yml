@@ -1,0 +1,15 @@
+language: c
+before_script:
+  - git clone https://github.com/asdf-vm/asdf.git
+  - . asdf/asdf.sh
+script: 
+  - asdf plugin-add gonogo ./
+  - asdf list-all gonogo
+  - asdf plugin-test gonogo ./ --asdf-plugin-gitref $TRAVIS_COMMIT 'gonogo version --client=true'
+os:
+  - linux
+  - osx
+arch:
+  - amd64
+  - arm64
+  - ppc64le
